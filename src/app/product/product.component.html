@@ -1,0 +1,31 @@
+
+<app-pagination (searchTextChanges)="onSearchTextEntered($event)"></app-pagination>
+<div class="products-container">
+<ng-container *ngFor="let product of productData.products" >
+
+    <div class="product-card" *ngIf="searchText === '' || product.title.toLowerCase().includes(searchText)">
+      <div class="thumbnail">
+        <img src="{{ product.thumbnail }}" alt="Product Thumbnail" />
+      </div>
+      <div class="product-details">
+        <h3 class="product-title">{{ product.title }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">${{ product.price }}</p>
+        <p class="product-discount">{{ product.discountPercentage }}% off</p>
+        <div class="rating">
+          <span class="rating-value">⭐⭐⭐⭐{{ product.rating }}</span>
+        </div>
+        <p class="product-stock">In Stock: {{ product.stock }}</p>
+        <p class="product-brand">Brand: {{ product.brand }}</p>
+        <p class="product-category">Category: {{ product.category }}</p>
+      </div>
+      <div class="product-images">
+        <img src="{{ product.images[0] }}" alt="Product Images 1" />
+        <img src="{{ product.images[1] }}" alt="Product Images 2" />
+
+        <img src="{{ product.images[2] }}" alt="Product Images 3" />
+      </div>
+    </div>
+
+</ng-container>
+</div>
